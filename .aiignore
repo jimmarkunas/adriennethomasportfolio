@@ -1,0 +1,31 @@
+# Large build/output directories
+.next/
+.next-dev/
+out/
+node_modules/
+
+# Heavy generated metadata
+*.tsbuildinfo
+
+# Non-production app routes
+src/app/experiments/**
+src/prototypes/**
+public/reference/**
+
+# Non-runtime writing/source briefs
+docs/case-studies/briefs/**
+
+# Heavy media/doc assets not needed for code edits
+public/**/*.pdf
+public/**/*.mp4
+public/**/*.mov
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.webp
+public/**/*.gif
+public/**/*.avif
+public/**/*.svg
+
+# Third-party worker bundle
+public/pdf.worker.mjs
