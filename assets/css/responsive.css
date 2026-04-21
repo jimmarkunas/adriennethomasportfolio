@@ -26,9 +26,10 @@
     flex-basis: 100%;
     z-index: 99;
     }
-    .hero-img img {
+    .hero-subject {
     width: auto;
      height: auto; 
+     transform: translateY(-90px);
     }
     .main-menu-area ul li a {
     padding: 10px 3px;
@@ -256,9 +257,10 @@
       max-width: 800px;
       padding: 0 10px;
     }
-    .hero-img img {
+    .hero-subject {
      width: 100%;
      height: auto; 
+     transform: translateY(-50px);
     }
     .shape {
     top: 230px;
@@ -306,7 +308,7 @@ top: 0;
     padding-top: 45px;
 }
 .text-orange{
-    color:#FF6600!important;
+    color:#37b1c9!important;
 }
 .accordion-skill-style {
     margin-top: 40px;
@@ -659,6 +661,9 @@ padding: 0 15px;
     top: 128px;
     width: 88%;
 }
+.hero-subject {
+    transform: translateY(-30px);
+}
 .hero-content {
     text-align: center;
 }
@@ -770,7 +775,7 @@ padding: 0 15px;
 }
 .contact-list li .content p {
     line-height: 4px;
-    color: #f60;
+    color: #37b1c9;
 }
 .contact-list li {
     align-items: start;
