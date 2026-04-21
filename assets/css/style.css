@@ -1019,7 +1019,7 @@ p {
 
 .hero-subject {
     display: block;
-    transform: translateY(-120px);
+    margin-top: -120px;
 }
 /***********************************************************
   about Section  
