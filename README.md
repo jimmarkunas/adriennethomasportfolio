@@ -1,2 +1,2 @@
-# adriennethomasportfolio
-Adrienne's Portfolio Page
+# dylancorneliusportfolio
+Dylan's Landing Pages
