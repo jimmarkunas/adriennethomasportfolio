@@ -1,0 +1,51 @@
+@media only screen and (max-width: 1199px) {
+    .hero-content h2 {
+        font-size: clamp(42px, 6.6vw, 66px);
+        line-height: 1.08;
+    }
+
+    .section-title h4 {
+        font-size: clamp(30px, 4.6vw, 52px);
+    }
+
+    .about-section p {
+        font-size: clamp(17px, 2vw, 20px);
+    }
+
+    .hero-counter .counter-single h2 {
+        font-size: clamp(32px, 5.4vw, 42px);
+    }
+
+    .hero-counter .counter-single p {
+        font-size: clamp(13px, 2.1vw, 16px);
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .hero-counter {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .counter-single p {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .about-info {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 490px) {
+    .hero-content h2 {
+        font-size: clamp(34px, 9.5vw, 44px);
+        line-height: 1.1;
+    }
+
+    .counter-single h2,
+    .counter-single p {
+        text-align: center;
+    }
+}

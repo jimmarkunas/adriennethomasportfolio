@@ -1,0 +1,29 @@
+.nav-pill-btn,
+.btn-default,
+.cta-panel-btn {
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.footer-brand-copy,
+.col-contact p,
+.footer-bottom p {
+    color: var(--text-secondary);
+}
+
+.footer-layout-v2 {
+    justify-content: center;
+}
+
+.footer-layout-v2 .footer-brand-col {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-layout-v2 .ft-title,
+.footer-layout-v2 .col-contact {
+    text-align: center;
+}

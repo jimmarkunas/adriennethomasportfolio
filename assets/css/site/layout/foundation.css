@@ -1,0 +1,31 @@
+:root {
+    --brand-accent: #37b1c9;
+    --surface-0: #111216;
+    --surface-1: #17191f;
+    --surface-2: #1d2028;
+    --text-primary: #f3f5f7;
+    --text-secondary: #b9bec7;
+    --line-soft: rgba(55, 177, 201, 0.24);
+    --line-strong: rgba(55, 177, 201, 0.44);
+}
+
+body {
+    background: #0f1115;
+    color: var(--text-primary);
+}
+
+.section-padding {
+    padding-top: clamp(68px, 8vw, 98px);
+    padding-bottom: clamp(58px, 7vw, 86px);
+}
+
+.hero-banner,
+.about-section,
+.experience-area,
+.skills-area,
+.ambassador-area,
+.impact-area,
+.cta-panel-area,
+.footer-area {
+    background: linear-gradient(90deg, #0f1115 0%, #12141b 52%, #0f1115 100%);
+}

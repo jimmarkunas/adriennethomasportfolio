@@ -1,0 +1,46 @@
+@media only screen and (max-width: 767px) {
+    .main-menu-wrap {
+        display: flex !important;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .site-logo {
+        width: 100%;
+        float: none;
+        flex-basis: auto;
+    }
+
+    .site-logo .logo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-log-reg {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .header-log-reg .nav-pill-btn {
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+        text-align: center;
+        font-size: 13px;
+        padding: 9px 10px;
+    }
+
+    .about-info {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .about-info .nav-pill-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

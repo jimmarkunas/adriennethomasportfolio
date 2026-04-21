@@ -1,0 +1,33 @@
+.section-title h2 span,
+.section-title2 h2 span,
+.hero-content h2 span {
+    color: var(--brand-accent);
+}
+
+.section-title h4 {
+    width: 100%;
+    max-width: none;
+    margin: 0 0 16px;
+    font-family: 'Roboto Serif', serif;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.section-title.text-center h4 {
+    max-width: 28ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title2 h4 {
+    max-width: 22ch;
+}
+
+.about-section .section-title2 h4 {
+    max-width: none;
+    width: 100%;
+    font-size: clamp(30px, 3.2vw, 46px);
+    line-height: 1.12;
+    margin: 0 0 18px;
+}

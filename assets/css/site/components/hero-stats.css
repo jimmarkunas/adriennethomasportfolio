@@ -1,0 +1,29 @@
+.hero-content h2 {
+    margin-bottom: 20px;
+    font-size: clamp(44px, 6.2vw, 88px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.counter-single h2 {
+    color: var(--brand-accent);
+}
+
+.counter-single p {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+}
+
+.hero-counter .counter-single h2 {
+    font-size: clamp(34px, 3.8vw, 52px);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.hero-counter .counter-single p {
+    font-size: clamp(14px, 1.15vw, 19px);
+    line-height: 1.18;
+    max-width: 13ch;
+}

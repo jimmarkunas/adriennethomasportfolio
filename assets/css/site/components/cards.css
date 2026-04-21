@@ -1,0 +1,41 @@
+.timeline-card,
+.skills-block,
+.ambassador-card,
+.impact-card,
+.cta-panel-card {
+    background: linear-gradient(180deg, rgba(29, 32, 40, 0.92) 0%, rgba(19, 22, 29, 0.96) 100%);
+    border: 1px solid var(--line-soft);
+    border-radius: 18px;
+}
+
+.timeline-card:hover,
+.skills-block:hover,
+.ambassador-card:hover,
+.impact-card:hover {
+    border-color: var(--line-strong);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.timeline-role,
+.skills-block-title,
+.impact-initiative,
+.amb-brand,
+.cta-panel-card h2 {
+    color: var(--text-primary);
+}
+
+.timeline-tag,
+.impact-tag,
+.amb-role-badge,
+.skill-pill,
+.cta-open-pill {
+    border-color: var(--line-soft);
+    color: var(--text-primary);
+    background: rgba(55, 177, 201, 0.1);
+}
+
+.timeline-entry--current .timeline-dot,
+.timeline-dot {
+    background: var(--brand-accent);
+    border-color: rgba(255, 255, 255, 0.32);
+}
