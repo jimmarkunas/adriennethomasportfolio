@@ -1,0 +1,76 @@
+/* tighten About -> Experience transition spacing */
+#about.section-padding {
+    padding-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+#experience.section-padding {
+    padding-top: clamp(30px, 3.8vw, 48px);
+}
+
+#experience .wrapper {
+    padding-top: 8px;
+}
+
+#experience .pt-60 {
+    padding-top: 24px;
+}
+
+/* improve skills density and readability */
+#skills .row.pt-60 {
+    align-items: flex-start;
+    row-gap: 20px;
+}
+
+#skills .skills-block {
+    height: auto;
+    min-height: 0;
+    padding: clamp(28px, 3vw, 38px);
+}
+
+#skills .skills-block-title {
+    font-size: clamp(30px, 2.2vw, 40px);
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+}
+
+#skills .skills-category-label {
+    font-size: clamp(14px, 1.05vw, 17px);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+
+#skills .skill-pills {
+    gap: 12px;
+}
+
+#skills .skill-pill {
+    font-size: clamp(18px, 1.15vw, 22px);
+    padding: 10px 16px;
+    line-height: 1.1;
+}
+
+#skills .cert-list {
+    gap: 20px;
+}
+
+#skills .cert-text {
+    font-size: clamp(18px, 1.28vw, 23px);
+    line-height: 1.42;
+}
+
+/* tighten Skills -> Ambassador transition */
+#skills.section-padding {
+    padding-bottom: clamp(30px, 3.8vw, 48px);
+}
+
+#ambassador.section-padding {
+    padding-top: clamp(30px, 3.8vw, 48px);
+}
+
+#ambassador .wrapper {
+    padding-top: 0;
+}
+
+#ambassador .pt-60 {
+    padding-top: 22px;
+}
