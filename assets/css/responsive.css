@@ -29,7 +29,7 @@
     .hero-subject {
     width: auto;
      height: auto; 
-     transform: translateY(-90px);
+     margin-top: -90px;
     }
     .main-menu-area ul li a {
     padding: 10px 3px;
@@ -260,7 +260,7 @@
     .hero-subject {
      width: 100%;
      height: auto; 
-     transform: translateY(-50px);
+     margin-top: -50px;
     }
     .shape {
     top: 230px;
@@ -662,7 +662,7 @@ padding: 0 15px;
     width: 88%;
 }
 .hero-subject {
-    transform: translateY(-30px);
+    margin-top: -30px;
 }
 .hero-content {
     text-align: center;
