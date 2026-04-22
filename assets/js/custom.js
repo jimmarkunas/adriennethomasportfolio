@@ -51,42 +51,119 @@
             });
         }
 
-        var revealNodes = document.querySelectorAll(
-            "section .section-title, section .hero-content, section .hero-img, section .service-item, " +
-                "section .counter-single, section .img-wrapper, section .about-info, section .testimonial-slider .item-wrapper, " +
-                "section .process-card, section .faq-item, section .cta-panel-card, footer .ft-single, footer .footer-bottom"
-        );
+        var sectionRevealSelector = [
+            ".section-title",
+            ".section-title2",
+            "#about p",
+            "#about .personal-info li",
+            "#about .about-info a",
+            ".timeline-entry",
+            ".testimonial-slider .owl-item",
+            ".testimonial-slider .item-wrapper",
+            ".skills-block",
+            ".skill-pill",
+            ".cert-item",
+            ".ambassador-intro",
+            ".ambassador-card",
+            ".impact-intro",
+            ".impact-card",
+            ".cta-panel-card"
+        ].join(", ");
 
-        if (revealNodes.length > 0) {
-            revealNodes.forEach(function (el, idx) {
+        var sliderSection = document.querySelector(".stat-strip-area");
+        var revealGroups = [];
+        var allRevealTargets = [];
+
+        var collectTargets = function (root, selector) {
+            if (!root) return [];
+            var nodes = root.querySelectorAll(selector);
+            return Array.prototype.slice.call(nodes);
+        };
+
+        if (sliderSection) {
+            var section = sliderSection.nextElementSibling;
+            while (section) {
+                if (section.tagName && section.tagName.toLowerCase() === "section") {
+                    var targets = collectTargets(section, sectionRevealSelector);
+                    if (targets.length === 0) {
+                        targets = [section];
+                    }
+
+                    var deduped = [];
+                    targets.forEach(function (node) {
+                        if (deduped.indexOf(node) === -1) {
+                            deduped.push(node);
+                        }
+                    });
+
+                    deduped.forEach(function (el, idx) {
+                        el.classList.add("reveal-in");
+                        el.style.transitionDelay = Math.min(idx, 8) * 0.06 + "s";
+                        allRevealTargets.push(el);
+                    });
+
+                    revealGroups.push({ trigger: section, targets: deduped });
+                }
+                section = section.nextElementSibling;
+            }
+        }
+
+        var footer = document.querySelector(".footer-area");
+        if (footer) {
+            var footerTargets = collectTargets(
+                footer,
+                ".ft-logo, .footer-brand-copy, .ft-social, .ft-title, .col-contact p, .footer-bottom"
+            );
+            if (footerTargets.length === 0) {
+                footerTargets = [footer];
+            }
+
+            footerTargets.forEach(function (el, idx) {
                 el.classList.add("reveal-in");
-                el.style.transitionDelay = Math.min(idx, 12) * 0.05 + "s";
+                el.style.transitionDelay = Math.min(idx, 6) * 0.06 + "s";
+                allRevealTargets.push(el);
             });
 
-            var revealAll = function () {
-                revealNodes.forEach(function (el) {
+            revealGroups.push({ trigger: footer, targets: footerTargets });
+        }
+
+        if (allRevealTargets.length > 0) {
+            var revealGroup = function (group) {
+                group.targets.forEach(function (el) {
                     el.classList.add("is-visible");
                 });
             };
 
+            var revealAll = function () {
+                revealGroups.forEach(function (group) {
+                    revealGroup(group);
+                });
+            };
+
             if ("IntersectionObserver" in window) {
-                var revealObserver = new IntersectionObserver(
+                var sectionObserver = new IntersectionObserver(
                     function (entries, obs) {
                         entries.forEach(function (entry) {
                             if (entry.isIntersecting) {
-                                entry.target.classList.add("is-visible");
+                                var match = null;
+                                revealGroups.forEach(function (group) {
+                                    if (group.trigger === entry.target) {
+                                        match = group;
+                                    }
+                                });
+                                if (match) {
+                                    revealGroup(match);
+                                }
                                 obs.unobserve(entry.target);
                             }
                         });
                     },
-                    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+                    { threshold: 0.12, rootMargin: "0px 0px -12% 0px" }
                 );
 
-                revealNodes.forEach(function (el) {
-                    revealObserver.observe(el);
+                revealGroups.forEach(function (group) {
+                    sectionObserver.observe(group.trigger);
                 });
-
-                setTimeout(revealAll, 2800);
             } else {
                 revealAll();
             }
