@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"\nimport sys, json, re\ninput_data = json.load(sys.stdin)\ncmd = input_data.get('command', '')\nbanned = [\n  (r'npm run build', 'No build verification — trust the edit.'),\n  (r'npm run dev', 'No dev server — check files directly.'),\n  (r'npx tsc', 'No tsc verification — trust the edit.'),\n  (r'node -e', 'No inline node scripts — read the lines instead.'),\n]\nfor pattern, reason in banned:\n  if re.search(pattern, cmd):\n    print(f'BLOCKED: {reason}', flush=True)\n    sys.exit(2)\n\"\n"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"\nimport sys, json\ninput_data = json.load(sys.stdin)\nlimit = input_data.get('limit')\noffset = input_data.get('offset')\npath = (input_data.get('file_path') or input_data.get('path') or '').lower()\nif limit is None and offset is None:\n    print('BLOCKED: Read requires a limit. Use offset+limit to read only the lines you need.', flush=True)\n    sys.exit(2)\nblocked_dirs = ['/node_modules/', '/.next/', '/.next-dev/', '/out/']\nblocked_suffixes = ('.pdf', '.mp4', '.mov', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.avif')\nif path:\n    if any(d in path for d in blocked_dirs):\n        print('BLOCKED: Heavy build/vendor directories are excluded by default.', flush=True)\n        sys.exit(2)\n    if ('/public/' in path and path.endswith(blocked_suffixes)) or path.endswith('public/pdf.worker.mjs'):\n        print('BLOCKED: Heavy media/worker assets are excluded by default.', flush=True)\n        sys.exit(2)\n\"\n"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+name: Build and Publish Static Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout source branch
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Verify out folder exists
+        run: |
+          test -d out
+          test -f out/index.html
+
+      - name: Publish out folder to hostinger-static branch
+        run: |
+          set -euo pipefail
+
+          DEPLOY_BRANCH="hostinger-static"
+          SOURCE_SHA="${GITHUB_SHA}"
+          REPO_URL="https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          TMP_DIR="$(mktemp -d)"
+
+          git clone --branch "${DEPLOY_BRANCH}" "${REPO_URL}" "${TMP_DIR}"
+
+          find "${TMP_DIR}" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R "${GITHUB_WORKSPACE}/out/." "${TMP_DIR}/"
+
+          cd "${TMP_DIR}"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No deploy changes to publish."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Deploy static site from ${SOURCE_SHA}"
+          git push origin "${DEPLOY_BRANCH}"

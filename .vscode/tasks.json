@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ensure-dev",
+      "type": "process",
+      "command": "bash",
+      "args": ["scripts/dev-startup.sh", "ensure-dev"],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*(STARTING_DEV_SERVER|next dev).*",
+          "endsPattern": ".*(DEV_SERVER_ALREADY_RUNNING|Ready in .*).*"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": false
+      }
+    },
+    {
+      "label": "open-simple-browser",
+      "type": "process",
+      "command": "bash",
+      "args": ["scripts/dev-startup.sh", "open-browser"],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "startup",
+      "dependsOrder": "sequence",
+      "dependsOn": ["ensure-dev", "open-simple-browser"],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}
