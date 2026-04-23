@@ -74,3 +74,34 @@
 #ambassador .pt-60 {
     padding-top: 22px;
 }
+
+/* align and tighten Impact section rhythm */
+#impact.section-padding {
+    padding-top: clamp(46px, 5.6vw, 72px);
+    padding-bottom: clamp(52px, 6vw, 82px);
+}
+
+#impact .container > .row:first-child {
+    margin-bottom: 0;
+}
+
+#impact .section-title h2 {
+    margin-bottom: 14px;
+}
+
+#impact .section-title h4 {
+    margin: 0;
+}
+
+#impact .pt-60 {
+    padding-top: 26px;
+}
+
+#impact .row.pt-60 + .row.pt-60 {
+    padding-top: 22px;
+}
+
+#impact .impact-intro {
+    max-width: 74ch;
+    margin: 0;
+}

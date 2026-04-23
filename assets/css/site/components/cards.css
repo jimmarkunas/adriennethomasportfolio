@@ -10,10 +10,15 @@
 
 .timeline-card:hover,
 .skills-block:hover,
-.ambassador-card:hover,
 .impact-card:hover {
     border-color: var(--line-strong);
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+#ambassador .ambassador-card:hover {
+    background: rgba(47, 128, 237, 0.2) !important;
+    border-color: #2f80ed !important;
+    box-shadow: 0 16px 34px rgba(47, 128, 237, 0.28);
 }
 
 .timeline-role,
@@ -38,4 +43,23 @@
 .timeline-dot {
     background: var(--brand-accent);
     border-color: rgba(255, 255, 255, 0.32);
+}
+
+#impact .impact-card {
+    padding: 30px 28px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#impact .impact-region,
+#impact .impact-initiative,
+#impact .impact-desc,
+#impact .impact-tags {
+    margin: 0;
+}
+
+#impact .impact-tags {
+    margin-top: 6px;
 }
